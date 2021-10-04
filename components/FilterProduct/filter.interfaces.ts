@@ -4,13 +4,13 @@ export interface InitialFilter {
   catalog?: string;
   category?: string;
   price: number;
-  brend?: string;
+  brand?: string;
   popularity: boolean;
 }
 
 export interface ISelectsOptions {
   category: IOptions[];
-  brend: IOptions[];
+  brand: IOptions[];
 }
 
 export interface IFilterProductProps {

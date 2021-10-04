@@ -82,10 +82,10 @@ const FilterProduct: React.FC<IFilterProductProps> = (props) => {
               />
 
               <Field 
-                name="brend"
-                label="Brend"
+                name="brand"
+                label="Brand"
                 className={classes.selectField}
-                options={selectsOptions.brend}
+                options={selectsOptions.brand}
                 render={SelectFilter}
               />
 

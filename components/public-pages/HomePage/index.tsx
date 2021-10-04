@@ -7,11 +7,15 @@ import useStyles from './styles';
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 // Types
 import { IHomePageProps } from './intefaces';
+import FilterProduct from '../../FilterProduct';
 
 const HomePage: React.FC<IHomePageProps> = (props) => {
 
   const { 
-    sliderList
+    sliderList, 
+    initialFilter,
+    filterSelectsOptions,
+    onFilter,
   } = props; 
 
   const classes = useStyles();
@@ -42,6 +46,11 @@ const HomePage: React.FC<IHomePageProps> = (props) => {
         </Carousel>
        </div>
       </div>
+      <FilterProduct 
+        initialFilter={initialFilter}
+        selectsOptions={filterSelectsOptions}
+        onFilter={onFilter}
+      />
     </>
   )
 }
