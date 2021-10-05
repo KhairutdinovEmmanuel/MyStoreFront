@@ -34,6 +34,9 @@ const CatalogPage: React.FC<ICatalogPageProps> = (props) => {
                   height={510}
                   picture={item.imageUrl}
                   src={item.imageUrl}
+                  titleTypographyProps={{
+                    align: 'center',
+                  }}
                 />
               </a>
             </Link>
