@@ -1,4 +1,6 @@
-export const GET_PRODUCTS = [
+import { IProduct } from "./interfaces/products.interfaces";
+
+export const GET_PRODUCTS: IProduct[] = [
     {
       id: 1,
       title: "Man",
