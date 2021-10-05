@@ -1,15 +1,29 @@
+// Styles 
+import useStyles from './styles';
 // Types
+import FilterProduct from "../../FilterProduct";
 import { ISelectedCatalogPageProps } from "./interfaces";
+
 
 const SelectedCatalogPage: React.FC<ISelectedCatalogPageProps> = (props) => {
   
   const {
-    selectedCatalog,
+    initialFilter,
+    selectsOptions,
+    onFilter,
   } = props;
   
+  const classes = useStyles();
+
   return (
     <>
-      Selected Catalog {selectedCatalog}
+      <div className={classes.containerFilterProduct}>
+        <FilterProduct
+          initialFilter={initialFilter}
+          selectsOptions={selectsOptions}
+          onFilter={onFilter}
+        />
+      </div>
     </>
   )
 };

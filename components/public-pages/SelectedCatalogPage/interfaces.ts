@@ -1,5 +1,11 @@
+import { InitialFilter, ISelectsOptions } from "../../FilterProduct/filter.interfaces";
+
 export interface ISelectedCatalogPageProps {
-  selectedCatalog: string;
+  initialFilter: InitialFilter;
+  selectsOptions: ISelectsOptions;
+  onFilter: (values: InitialFilter) => void;
 }
 
-export interface ISelectedCatalogPageContainerProps extends ISelectedCatalogPageProps {};
+export interface ISelectedCatalogPageContainerProps {
+  selectedCatalog: string;
+}
