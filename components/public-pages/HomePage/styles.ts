@@ -1,5 +1,6 @@
 import makeStyles  from "@material-ui/core/styles/makeStyles";
 import stylesCardProducts from '../../../styles/CardProducts';
+import stylesFilterProduct from '../../../styles/FilterProduct';
 
 export default makeStyles((theme) => ({ 
   containerSlider: {
@@ -24,17 +25,6 @@ export default makeStyles((theme) => ({
     width: "100%",
     height: "100%",
   },
-  containerFilterProduct: {
-    maxWidth: "960px",
-    margin: "auto",
-
-    [`${theme.breakpoints.up("lg")}`]: {
-      maxWidth: "1100px",
-    },
-
-    [`${theme.breakpoints.up("xl")}`]: {
-      maxWidth: "1260px",
-    },
-  },
+  ...stylesFilterProduct(theme),
   ...stylesCardProducts(theme),
 }))
