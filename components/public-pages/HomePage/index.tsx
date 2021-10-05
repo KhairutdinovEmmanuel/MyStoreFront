@@ -2,16 +2,20 @@
 import { useMemo } from 'react';
 // Components
 import { Carousel } from 'react-responsive-carousel';
+import FilterProduct from '../../FilterProduct';
+import ListItems from '../../ListItems';
 // Styles
 import useStyles from './styles';
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 // Types
 import { IHomePageProps } from './intefaces';
-import FilterProduct from '../../FilterProduct';
+import { IProduct } from '../../../mock/interfaces/products.interfaces';
+import CardProduct from '../../CardProduct';
 
 const HomePage: React.FC<IHomePageProps> = (props) => {
 
   const { 
+    products,
     sliderList, 
     initialFilter,
     filterSelectsOptions,
@@ -19,17 +23,6 @@ const HomePage: React.FC<IHomePageProps> = (props) => {
   } = props; 
 
   const classes = useStyles();
-
-  const renderSlide = useMemo(() => {
-    return sliderList.map((item) => (
-      <div key={item.slide} className={classes.slideItem}>
-        <img 
-          className={classes.slideItemImage}
-          src={item.imageUrl} 
-        />
-      </div>
-    ));
-  }, [sliderList])  
 
   return (
     <>
@@ -42,14 +35,49 @@ const HomePage: React.FC<IHomePageProps> = (props) => {
           infiniteLoop={true}
           autoPlay
         >
-          {renderSlide}
+          {sliderList.map((item) => (
+            <div key={item.slide} className={classes.slideItem}>
+              <img 
+                className={classes.slideItemImage}
+                src={item.imageUrl} 
+              />
+            </div>
+          ))}
         </Carousel>
        </div>
       </div>
-      <FilterProduct 
-        initialFilter={initialFilter}
-        selectsOptions={filterSelectsOptions}
-        onFilter={onFilter}
+      <div className={classes.containerFilterProduct} >
+        <FilterProduct 
+          initialFilter={initialFilter}
+          selectsOptions={filterSelectsOptions}
+          onFilter={onFilter}
+        />
+      </div>
+      <ListItems
+        className={classes.containerCardProduct}
+        items={products}
+        renderItem={(item: IProduct) => (
+          <div 
+            key={item.id} 
+            className={classes.cardProduct}
+          >
+            <CardProduct 
+              title={item.title}
+              price={item.price}
+              description={item.description}
+              imageProps={{
+                width: 570,
+                height: 300,
+                picture: item.imageUrl,
+                src: item.imageUrl,
+                alt: `Picture ${item.title}`,
+              }}
+              titleTypographyProps={{
+                align: 'center',
+              }}
+            />
+          </div>
+        )}
       />
     </>
   )

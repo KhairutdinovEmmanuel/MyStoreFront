@@ -9,10 +9,12 @@ import { InitialFilter } from "../FilterProduct/filter.interfaces";
 
 const HomePageContainer: React.FC = () => {
 
+  const [products, setProducts] = useState([]);
   const [sliderList, setSliderList] = useState([]);
   const [brandProducts, setBrandProducts] = useState([]);
   const [categoryProducts, setCategoryProducts] = useState([]);
 
+  const responseProducts = useMockData("GET_PRODUCTS", {});
   const responseSliderList = useMockData("GET_SLIDER", {});
   const responseBrandProducts = useMockData("GET_BRAND_PRODUCTS", {});
   const responseCategoryProducts = useMockData("GET_CATEGORY_PRODUCTS", {});
@@ -32,6 +34,13 @@ const HomePageContainer: React.FC = () => {
   }
 
   useEffect(() => {
+    if(responseProducts.loading) return;
+    if(responseProducts.data) {
+      setProducts(responseProducts.data);
+    } 
+  }, [responseProducts])
+
+  useEffect(() => {
     if(responseSliderList.loading) return;
     if(responseSliderList.data) {
       setSliderList(responseSliderList.data);
@@ -48,13 +57,13 @@ const HomePageContainer: React.FC = () => {
   useEffect(() => {
     if(responseCategoryProducts.loading) return;
     if(responseCategoryProducts.data) {
-      console.log("responseCategoryProducts.data", responseCategoryProducts.data);
       setCategoryProducts(responseCategoryProducts.data);
     } 
   }, [responseCategoryProducts])
 
   return (
     <HomePage 
+      products={products}
       sliderList={sliderList}
       initialFilter={initialFilter}
       filterSelectsOptions={filterSelectsOptions} 
