@@ -6,7 +6,7 @@ const Home: React.FC = () => {
   return (
     <MainLayout>
       <Head>
-        <title>Create Next App</title>
+        <title>Home page</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <HomePage />
