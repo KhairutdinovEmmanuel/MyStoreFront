@@ -1,5 +1,5 @@
 import makeStyles  from "@material-ui/core/styles/makeStyles";
-import stylesCard from '../../../styles/CardProducts';
+import stylesCardProducts from '../../../styles/CardProducts';
 
 export default makeStyles((theme) => ({ 
   containerSlider: {
@@ -36,5 +36,5 @@ export default makeStyles((theme) => ({
       maxWidth: "1260px",
     },
   },
-  ...stylesCard(theme),
+  ...stylesCardProducts(theme),
 }))

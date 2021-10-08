@@ -25,7 +25,11 @@ const AppHeader: React.FC = () => {
           variant="h1"
           className={classes.titleLogo}
         >
-          MyStore
+          <Link href="/" >
+            <a>
+              MyStore
+            </a>
+          </Link>
         </Typography>
       </div>
       <div className={classes.sectionTabs} >
