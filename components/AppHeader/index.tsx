@@ -25,7 +25,7 @@ const AppHeader: React.FC = () => {
     return null;
   }, [])
 
-  const isMediaQueryMinWidthMd = clientWindow?.matchMedia("(max-width: 960px)").matches; 
+  const isMediaQueryMaxWidthMd = clientWindow?.matchMedia("(max-width: 960px)").matches; 
 
   const classes = useStyles({ openMenu });
   const permissions = useRolePermissions("USER");
@@ -35,10 +35,10 @@ const AppHeader: React.FC = () => {
   }
 
   useEffect(() => {
-    if(isMediaQueryMinWidthMd) {
+    if(isMediaQueryMaxWidthMd) {
       setOpenMenu((prevOpenMenu) => !prevOpenMenu);
     }
-  }, [isMediaQueryMinWidthMd])
+  }, [isMediaQueryMaxWidthMd])
 
   return (
     <header className={classes.header} >
