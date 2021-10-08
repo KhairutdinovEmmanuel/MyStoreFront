@@ -7,6 +7,8 @@ import useMockData from "../../hooks/useMockData";
 // Types
 import { ISelectedCatalogPageContainerProps } from "../public-pages/SelectedCatalogPage/interfaces";
 import { InitialFilter, ISelectsOptions } from "../FilterProduct/filter.interfaces";
+import useLazyMockData from "../../hooks/useLazyMockData";
+import { IProduct } from "../../mock/interfaces/products.interfaces";
 
 const SelectedCatalogPageContainer: React.FC<ISelectedCatalogPageContainerProps> = (props) => {
   
@@ -14,9 +16,11 @@ const SelectedCatalogPageContainer: React.FC<ISelectedCatalogPageContainerProps>
     selectedCatalog,
   } = props;
 
+  const [products, setProducts] = useState<IProduct[]>([]);
   const [brandProduct, setBrandProduct] = useState([]);
   const [catagoryProduct, setCategoryProduct] = useState([]);
 
+  const [requestGetProduct, responseProducts] = useLazyMockData({});
   const responseBrandProducts = useMockData("GET_BRAND_PRODUCTS", {});
   const responseCategoryProducts = useMockData("GET_CATEGORY_PRODUCTS", {}); 
 
@@ -36,6 +40,12 @@ const SelectedCatalogPageContainer: React.FC<ISelectedCatalogPageContainerProps>
   }
 
   useEffect(() => {
+    if(selectedCatalog) {
+      requestGetProduct(`GET_${selectedCatalog.toUpperCase()}_PRODUCTS`);
+    }
+  }, [selectedCatalog])
+
+  useEffect(() => {
     if(responseBrandProducts.loading) return;
     if(responseBrandProducts.data) {
       setBrandProduct(responseBrandProducts.data);
@@ -48,9 +58,17 @@ const SelectedCatalogPageContainer: React.FC<ISelectedCatalogPageContainerProps>
       setCategoryProduct(responseCategoryProducts.data);
     }
   }, [responseCategoryProducts])
+
+  useEffect(() => {
+    if(responseProducts.loading) return;
+    if(responseProducts.data) {
+      setProducts(responseProducts.data);
+    }
+  }, [responseProducts])
   
   return (
     <SelectedCatalogPage
+      products={products}
       initialFilter={initialFilter}
       selectsOptions={selectsOptions}
       onFilter={onFilter} 
