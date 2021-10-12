@@ -20,25 +20,30 @@ const AppHeader: React.FC = () => {
 
   const [openMenu, setOpenMenu] = useState(false);
 
-  const clientWindow = useMemo(() => {
-    if(!global && window) return window;
-    return null;
-  }, [])
-
-  const isMediaQueryMaxWidthMd = clientWindow?.matchMedia("(max-width: 960px)").matches; 
-
   const classes = useStyles({ openMenu });
   const permissions = useRolePermissions("USER");
 
-  const handleClickMenu: React.MouseEventHandler<HTMLDivElement> = (event) => {
+  const handleClickMenu: React.MouseEventHandler<HTMLDivElement> = () => {
     setOpenMenu((prevOpenMenu) => !prevOpenMenu);
   }
 
   useEffect(() => {
-    if(isMediaQueryMaxWidthMd) {
-      setOpenMenu((prevOpenMenu) => !prevOpenMenu);
+    const handleResizeWindow = () => {
+      const mediaQueryMinWidthMd = window.matchMedia("(min-width: 960px)");
+      
+      if(mediaQueryMinWidthMd.matches) {
+        setOpenMenu(false);
+      }
     }
-  }, [isMediaQueryMaxWidthMd])
+
+    window?.addEventListener("resize", handleResizeWindow);
+
+    handleResizeWindow();
+    
+    return () => {
+      window?.removeEventListener("resize", handleResizeWindow);
+    }
+  }, [])
 
   return (
     <header className={classes.header} >
