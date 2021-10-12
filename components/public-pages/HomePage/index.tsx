@@ -68,7 +68,6 @@ const HomePage: React.FC<IHomePageProps> = (props) => {
               imageProps={{
                 width: 570,
                 height: 300,
-                picture: item.imageUrl,
                 src: item.imageUrl,
                 alt: `Picture ${item.title}`,
               }}

@@ -44,7 +44,6 @@ const SelectedCatalogPage: React.FC<ISelectedCatalogPageProps> = (props) => {
                 width: 560,
                 height: 300,
                 src: item.imageUrl,
-                picture: item.imageUrl,
               }}
               titleTypographyProps={{
                 align: 'center',
