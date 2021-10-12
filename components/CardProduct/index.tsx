@@ -28,9 +28,9 @@ const CardProduct: React.FC<ICardProductProps> = (props) => {
   
   return (
     <Card className={className} >
-      <CardMedia>
+      <div>
         <WrapperImage {...imageProps} />
-      </CardMedia>
+      </div>
       <CardHeader 
         title={title} 
         titleTypographyProps={titleTypographyProps}
