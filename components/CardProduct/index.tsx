@@ -1,6 +1,5 @@
 import { ImageProps } from "next/image";
 import Card from "@material-ui/core/Card";
-import CardMedia from "@material-ui/core/CardMedia";
 import CardHeader from "@material-ui/core/CardHeader";
 import CardContent from "@material-ui/core/CardContent";
 import Typography from "@material-ui/core/Typography";
@@ -28,10 +27,9 @@ const CardProduct: React.FC<ICardProductProps> = (props) => {
   
   return (
     <Card className={className} >
-      <CardMedia 
-        component={WrapperImage}
-        {...imageProps}
-      />
+      <div>
+        <WrapperImage {...imageProps} />
+      </div>
       <CardHeader 
         title={title} 
         titleTypographyProps={titleTypographyProps}
