@@ -1,7 +1,6 @@
 import { ImageProps } from "next/image";
 import Card from "@material-ui/core/Card";
 import CardHeader from "@material-ui/core/CardHeader";
-import CardMedia from "@material-ui/core/CardMedia";
 import WrapperImage from "../WrapperImage";
 
 export interface ICardSectionProductProps {
@@ -29,10 +28,11 @@ const CardSectionProduct: React.FC<ICardSectionProductProps & ImageProps> = (pro
         title={title} 
         titleTypographyProps={titleTypographyProps}
       />
-      <CardMedia 
-        component={WrapperImage} 
-        {...imageProps}
-      />
+      <div>
+        <WrapperImage
+          {...imageProps}
+        />
+      </div>
     </Card>
   )
 }
