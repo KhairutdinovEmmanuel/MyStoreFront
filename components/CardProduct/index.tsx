@@ -3,12 +3,12 @@ import Card from "@material-ui/core/Card";
 import CardHeader from "@material-ui/core/CardHeader";
 import CardContent from "@material-ui/core/CardContent";
 import Typography from "@material-ui/core/Typography";
-import WrapperImage, { IWrapperImageProps } from "../WrapperImage";
+import CustomCartMedia from "../CustomCardMedia";
 
 export interface ICardProductProps {
   title: string;
   className?: string;
-  imageProps: IWrapperImageProps & ImageProps;
+  imageProps: ImageProps;
   titleTypographyProps: object;
   price: string;
   description: string;
@@ -18,8 +18,8 @@ const CardProduct: React.FC<ICardProductProps> = (props) => {
   
   const {
     className,
-    title,
     imageProps,
+    title,
     titleTypographyProps,
     price,
     description,
@@ -27,9 +27,9 @@ const CardProduct: React.FC<ICardProductProps> = (props) => {
   
   return (
     <Card className={className} >
-      <div>
-        <WrapperImage {...imageProps} />
-      </div>
+      <CustomCartMedia
+        {...imageProps}
+      />
       <CardHeader 
         title={title} 
         titleTypographyProps={titleTypographyProps}
