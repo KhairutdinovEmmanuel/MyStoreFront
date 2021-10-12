@@ -58,22 +58,22 @@ export default makeStyles<Theme, PropsType>((theme) => ({
   sectionTabs: {
     [`${theme.breakpoints.up("xs")}`]: {
       width: "100%",
+      height: (props) => (props.openMenu ? "100vh" : "initial"),
       display: (props) => (props.openMenu ? "flex" : "none"),
       flexDirection: 'column',
       position: "absolute",
       background: theme.palette.grey[800],
       top: "70px",
-      zIndex: 1,
+      zIndex: 5,
     },
 
     [`${theme.breakpoints.up("sm")}`]: {
       display: (props) => (props.openMenu ? "flex" : "none"),
-      alignItems: "center",
-      justifyContent: "space-around",
       flex: " 1 1 300px",
     },
 
     [`${theme.breakpoints.up("md")}`]: {
+      height: "initial",
       display: "flex !important",
       flexDirection: "row",
       justifyContent: "space-around",
@@ -85,18 +85,19 @@ export default makeStyles<Theme, PropsType>((theme) => ({
   tab: {
     [`${theme.breakpoints.up("xs")}`]: {
       display: "flex",
-      justifyContent: "center",
     },
-
-    [`${theme.breakpoints.up("md")}`]: {
-      display: "flex",
-      alignItems: "center",
-    }
   },
   tabTitle: {
     fontSize: theme.spacing(3),
     fontWeight: 600,
     marginLeft: theme.spacing(1),
+
+    [`${theme.breakpoints.up("xs")}`]: {
+      width: "100%",
+      paddingTop: "10px",
+      paddingBottom: "10px",
+      textAlign: "center",
+    },
   },
   tabLink: {
     display: "block",
