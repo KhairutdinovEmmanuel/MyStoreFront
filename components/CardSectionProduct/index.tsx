@@ -1,23 +1,22 @@
 import { ImageProps } from "next/image";
 import Card from "@material-ui/core/Card";
 import CardHeader from "@material-ui/core/CardHeader";
-import WrapperImage from "../WrapperImage";
+import CustomCartMedia from "../CustomCardMedia";
 
 export interface ICardSectionProductProps {
-  title: ((string | React.ReactElement<any, any>) & string) & React.ReactNode & string;
   className?: string;
-  picture: string;
+  title: ((string | React.ReactElement<any, any>) & string) & React.ReactNode & string;
+  imageProps: ImageProps;
   titleTypographyProps?: object,
 }
 
-const CardSectionProduct: React.FC<ICardSectionProductProps & ImageProps> = (props) => {
+const CardSectionProduct: React.FC<ICardSectionProductProps> = (props) => {
   
   const {
     title,
-    children,
     className,
     titleTypographyProps,
-    ...imageProps
+    imageProps,
   } = props; 
 
   return (
@@ -28,11 +27,7 @@ const CardSectionProduct: React.FC<ICardSectionProductProps & ImageProps> = (pro
         title={title} 
         titleTypographyProps={titleTypographyProps}
       />
-      <div>
-        <WrapperImage
-          {...imageProps}
-        />
-      </div>
+      <CustomCartMedia {...imageProps} />
     </Card>
   )
 }
