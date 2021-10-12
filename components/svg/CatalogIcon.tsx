@@ -1,16 +1,8 @@
 import { IconButton } from '@material-ui/core';
 import useStyledIcon from '../../styles/StyledIcon';
+import { IconProps } from './icon.interfaces';
 
-interface IProps {
-    width?: number,
-    height?: number,
-    color?: string,
-    display?: boolean,
-    background?: string,
-    hoverColor?: string,
-}
-
-const Catalog: React.FC<IProps> = ({ ...props }) => {
+const Catalog: React.FC<IconProps> = ({ ...props }) => {
 
     const { 
         // Props Svg
@@ -27,6 +19,11 @@ const Catalog: React.FC<IProps> = ({ ...props }) => {
         display, 
         background, 
         hoverColor,
+        svgProps: {
+            width,
+            height,
+            color
+        }
     })();
 
     return (
