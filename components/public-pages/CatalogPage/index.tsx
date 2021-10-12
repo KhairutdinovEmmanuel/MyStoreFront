@@ -30,12 +30,13 @@ const CatalogPage: React.FC<ICatalogPageProps> = (props) => {
               <a>
                 <CardSectionProducts
                   title={item.title}
-                  width={952}
-                  height={510}
-                  picture={item.imageUrl}
-                  src={item.imageUrl}
                   titleTypographyProps={{
                     align: 'center',
+                  }}
+                  imageProps={{
+                    width: 952,
+                    height: 510,
+                    src: item.imageUrl
                   }}
                 />
               </a>
